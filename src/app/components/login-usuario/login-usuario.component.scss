@@ -1,0 +1,32 @@
+.errorValidacion {
+    margin-top: 5px;
+    color: #9e7b00;
+}
+
+.loginCard {
+    max-width: 320px;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.contenedorLogin{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.botonLogin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Handlee', cursive;
+}
+
+
+.temaBtnLogin{
+    background-color:#9e7b00;
+    color: white;
+}
