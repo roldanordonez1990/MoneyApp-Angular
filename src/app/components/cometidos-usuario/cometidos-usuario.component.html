@@ -1,1 +1,36 @@
-<p>cometidos-usuario works!</p>
+<app-navigation-header></app-navigation-header>
+<div class="row mt-4 ml-2">
+    <div class="col-sm-8">
+        <h3 class="text-center tipoLetra">Historial de gastos</h3>
+        <table width="100%" border="1" class="table-responsive-sm mt-3">
+            <thead class="text-center">
+                <th>ID</th>
+                <th>Gasto</th>
+                <th>Categoría</th>
+                <th>Lugar</th>
+                <th>Fecha</th>
+                <th>Cuenta</th>
+                <th>Comisión</th>
+                <th>Eliminar</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cometido of listadoCometidos" class="text-center">
+                    <td>{{cometido.idcometido}}</td>
+                    <td>{{cometido.gasto}}€</td>
+                    <td>{{cometido.categoria}}</td>
+                    <td>{{cometido.lugar['nombre']}}</td>
+                    <td>{{cometido.fecha | date:'dd/MM/yy'}}</td>
+                    <td>{{cometido.id_cuenta['num_cuenta']}}</td>
+                    <td>{{cometido.comision}}€</td>
+                    <td>   
+                    <button mat-icon-button color="primary" aria-label="Example icon button with a menu icon">
+                        <mat-icon class="colorButtonDelete" >delete</mat-icon></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-sm-4">
+        <app-form-transaction></app-form-transaction>
+    </div>
+</div>

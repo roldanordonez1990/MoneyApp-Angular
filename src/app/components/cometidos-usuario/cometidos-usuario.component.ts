@@ -17,8 +17,8 @@ export class CometidosUsuarioComponent implements OnInit {
 
     this.cometidosService.getCometidosPorUsuario().subscribe(data =>{
       
-      this.listadoCometidos = data;
-        console.log(data);
+      this.listadoCometidos = data['cometidos'];
+        console.log(this.listadoCometidos);
     });
   }
 }

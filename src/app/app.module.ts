@@ -15,11 +15,19 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { CometidosUsuarioComponent } from './components/cometidos-usuario/cometidos-usuario.component';
+import { NavigationHeaderComponent } from './components/navigation-header/navigation-header.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { FormTransactionComponent } from './components/form-transaction/form-transaction.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   declarations: [
     AppComponent,
     LoginUsuarioComponent,
-    CometidosUsuarioComponent
+    CometidosUsuarioComponent,
+    NavigationHeaderComponent,
+    FormTransactionComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +39,11 @@ import { CometidosUsuarioComponent } from './components/cometidos-usuario/cometi
     MatIconModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatToolbarModule,
+    MatCheckboxModule,
+    MatRadioModule,
+    MatSelectModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }],
   bootstrap: [AppComponent]

@@ -6,9 +6,9 @@ export interface Cometidos {
     idcometido: number;
     gasto: number;
     categoria: string;
-    lugar: number;
+    lugar: number[];
     fecha: Date;
-    id_cuenta: number;
+    id_cuenta: number[];
     comision: number;
 
 }
