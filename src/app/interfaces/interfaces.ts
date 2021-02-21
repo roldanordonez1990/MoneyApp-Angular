@@ -12,3 +12,24 @@ export interface Cometidos {
     comision: number;
 
 }
+
+export interface Cuenta{
+    num_cuenta: number;
+    tipo: string;
+    id_usuario: number;
+    saldo: number;
+}
+
+export interface Usuario{
+    idusuario: number;
+    username: string;
+    password: string;
+    email: string;
+    foto: string;
+}
+
+export interface Establecimiento{
+    idestablecimiento: number;
+    nombre: string;
+
+}

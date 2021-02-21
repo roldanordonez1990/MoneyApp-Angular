@@ -1,0 +1,37 @@
+<app-navigation-header></app-navigation-header>
+<div class="contenedorLogin">
+    <mat-card class="loginCard mb-4">
+        <mat-card-header class="botonLogin">
+            <mat-card-title>Actualiza tus datos</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <form [formGroup]="updateRegistroForm">
+                <mat-form-field appearance="fill">
+                    <mat-label>Username</mat-label>
+                    <input matInput placeholder="Tu nombre de usuario" formControlName="username">
+                    <mat-hint></mat-hint> <!--Esto es una pequeña etiqueta para sugerencias de texto-->
+                   
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Tu nombre de usuario" formControlName="email">
+                    <mat-hint></mat-hint> <!--Esto es una pequeña etiqueta para sugerencias de texto-->
+                   
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Contraseña</mat-label>
+                    <input matInput  placeholder="Tu contraseña" formControlName="password">
+                    <button mat-icon-button matSuffix>
+                        <mat-icon></mat-icon>
+                    </button>
+                </mat-form-field>
+                <mat-card-actions class="botonLogin">
+                    <button mat-stroked-button color="primary" class="temaBtnLogin" (click)="updateDatos()">Modificar</button>
+                    <button mat-stroked-button color="primary" class="temaBtnLogin" (click)="volverAlosCometidos()">Volver</button>
+                </mat-card-actions>
+            </form>
+        </mat-card-content>
+       
+    </mat-card>
+</div>

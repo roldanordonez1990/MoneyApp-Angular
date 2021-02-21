@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuarioLoginService } from 'src/app/services/usuario-login.service';
+import { FormTransactionService } from 'src/app/services/form-transaction.service';
 import { JwtService } from '../../services/jwt.service'; 
 
 
@@ -38,10 +39,16 @@ export class LoginUsuarioComponent implements OnInit {
           this.autenticadorJwtService.almacenaJWT(data.jwt);
           console.log('Datos correctos');
           this.router.navigate(['/listadoCometidos']);
+          this.usuarioService.emitirNuevoCambioEnUsuarioAutenticado(); // Emito evento de cambio en usuario autenticado
+
         } 
         else {
           console.log('Datos incorrectos');
         }
       });
+  }
+
+  registro(){
+    this.router.navigate(['/registroUsuario']);
   }
 }

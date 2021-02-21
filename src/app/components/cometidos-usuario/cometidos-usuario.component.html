@@ -1,36 +1,48 @@
-<app-navigation-header></app-navigation-header>
-<div class="row mt-4 ml-2">
-    <div class="col-sm-8">
-        <h3 class="text-center tipoLetra">Historial de gastos</h3>
-        <table width="100%" border="1" class="table-responsive-sm mt-3">
-            <thead class="text-center">
-                <th>ID</th>
-                <th>Gasto</th>
-                <th>Categoría</th>
-                <th>Lugar</th>
-                <th>Fecha</th>
-                <th>Cuenta</th>
-                <th>Comisión</th>
-                <th>Eliminar</th>
-            </thead>
-            <tbody>
-                <tr *ngFor="let cometido of listadoCometidos" class="text-center">
-                    <td>{{cometido.idcometido}}</td>
-                    <td>{{cometido.gasto}}€</td>
-                    <td>{{cometido.categoria}}</td>
-                    <td>{{cometido.lugar['nombre']}}</td>
-                    <td>{{cometido.fecha | date:'dd/MM/yy'}}</td>
-                    <td>{{cometido.id_cuenta['num_cuenta']}}</td>
-                    <td>{{cometido.comision}}€</td>
-                    <td>   
-                    <button mat-icon-button color="primary" aria-label="Example icon button with a menu icon">
-                        <mat-icon class="colorButtonDelete" >delete</mat-icon></button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+<div><app-navigation-header></app-navigation-header></div>
+
+    <div class="container w-100 p-0">
+        <div class="row mt-4">
+            <div class="col-sm-8">
+                <h3 class="text-center tipoLetra">Historial de gastos</h3>
+                <table mat-table  class="mat-elevation-z8 text-center mt-3 table-responsive-md"  width="100%">
+
+                    <ng-container matColumnDef="position">
+                        <thead class="text-center">
+                            <th mat-header-cell >Gasto</th>
+                            <th mat-header-cell >Categoría</th>
+                            <th mat-header-cell >Lugar</th>
+                            <th mat-header-cell >Fecha</th>
+                            <th mat-header-cell >Cuenta</th>
+                            <th mat-header-cell >Comisión</th>
+                            <th mat-header-cell >Eliminar</th>
+                        </thead>
+                    </ng-container>
+                  
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="name">
+                     
+                        <tr *ngFor="let cometido of listadoCometidos" class="text-center">
+                            <td>{{cometido.gasto}}€</td>
+                            <td>{{cometido.categoria}}</td>
+                            <td>{{cometido.lugar['nombre']}}</td>
+                            <td>{{cometido.fecha | date:'dd/MM/yy HH:mm:ss a'}}</td>
+                            <td>{{cometido.id_cuenta['num_cuenta']}}</td>
+                            <td>{{cometido.comision | number : "1.2-2"}}€</td>
+                            <td>   
+                            <button mat-icon-button color="primary" aria-label="Example icon button with a menu icon">
+                                <mat-icon class="colorButtonDelete" >delete</mat-icon></button>
+                            </td>
+                        </tr>
+                    </ng-container>
+                
+                  </table>
+            </div>
+            <div class="col-sm-4">
+                <app-form-transaction></app-form-transaction>
+            </div>
+        </div>
     </div>
-    <div class="col-sm-4">
-        <app-form-transaction></app-form-transaction>
-    </div>
-</div>
+    
+
+   
+     

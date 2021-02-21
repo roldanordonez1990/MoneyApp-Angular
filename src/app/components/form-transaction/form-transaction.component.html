@@ -1,45 +1,72 @@
-<div class="container-fluid">
+
     <div class="row">
-        <h4 class="text-center tipoLetra ml-5 mt-2">Realiza tu pago</h4>
             <div class="col-lg-12 ml-4">
-                <form [formGroup]="">
-                    <div class="ml-2">
-                        <mat-radio-group [formControl]="" class="ml-2">
-                            <mat-icon class="mt-2">sync_alt</mat-icon>
-                            <mat-radio-button value="auto">Ingreso</mat-radio-button>
-                            <mat-radio-button value="always" class="pl-2">Pago</mat-radio-button>
-                        </mat-radio-group>
-                    </div>
-                    <div class="ml-2">
-                        <mat-form-field appearance="standard">
-                        <mat-label>Gasto €</mat-label>
-                        <input matInput placeholder="Gasto">
-                        <mat-icon matSuffix>attach_money</mat-icon>
-                        </mat-form-field>
-                    </div>
-                    <div class="ml-2">
-                        <mat-form-field appearance="standard">
-                        <mat-label>Categoría</mat-label>
-                        <input matInput placeholder="Categoría">
-                        <mat-icon matSuffix>card_giftcard</mat-icon>
-                        </mat-form-field>
-                    </div>
-                    <div class="ml-2">
-                        <mat-form-field appearance="fill">
-                        <mat-label>Lugar</mat-label>
-                        <mat-select>
-                            <mat-option>Pizzería Paola</mat-option>
-                            <mat-option>Mc Donald</mat-option>
-                            <mat-option>Burguer King</mat-option>
-                            <mat-option>La Mafia</mat-option>
-                        </mat-select>
-                        <mat-error></mat-error>
-                    </mat-form-field>
-                    </div>
-                    <div class="ml-5 pl-1">
-                        <button mat-stroked-button color="primary" class="temaBtnPago"><mat-icon class="mr-1">cloud_upload</mat-icon>Pagar</button>
-                    </div>
-                </form>
+                <h4 class="text-center tipoLetra mr-5 mt-2">Realiza tu pago</h4>
+                <div>
+                <mat-tab-group class="mytema"> 
+                    <mat-tab label ="Pago"> 
+                        <form [formGroup]="cometidoForm" class="ml-5 pl-1">
+                            <div class="ml-2">
+                                <mat-form-field appearance="standard">
+                                <mat-label>Gasto €</mat-label>
+                                <input matInput placeholder="Gasto" formControlName="gasto">
+                                <mat-icon matSuffix>attach_money</mat-icon>
+                                </mat-form-field>
+                            </div>
+                            <div class="ml-2">
+                                <mat-form-field appearance="standard">
+                                <mat-label>Categoría</mat-label>
+                                <input matInput placeholder="Categoría" formControlName="categoria">
+                                <mat-icon matSuffix>card_giftcard</mat-icon>
+                                </mat-form-field>
+                            </div>
+                            <div class="ml-2">
+                                <mat-form-field appearance="fill" >
+                                <mat-label>Lugar</mat-label>
+                                <mat-select formControlName="lugar">
+                                    <mat-option *ngFor="let establecimiento of listadoEstablecimientos" [value]="establecimiento.idestablecimiento">{{establecimiento.nombre}}</mat-option>   
+                                </mat-select>
+                                <mat-error></mat-error>
+                            </mat-form-field>
+                            </div>
+                            <div class="ml-2">
+                                <mat-form-field appearance="fill">
+                                <mat-label>Cuenta</mat-label>
+                                <mat-select  formControlName="cuenta">
+                                    <mat-option *ngFor="let cuentas of listadoCuentaUsuario" [value]="cuentas.num_cuenta">{{cuentas.num_cuenta}}</mat-option>
+                                </mat-select>
+                               
+                            </mat-form-field>
+                            </div>
+                            <div class="ml-5 pl-1">
+                                <button mat-stroked-button color="primary" class="temaBtnPago" (click)="nuevoCometidoIntroducido()"><mat-icon class="mr-1">cloud_upload</mat-icon>Pagar</button>
+                            </div>
+                        </form>
+                    </mat-tab > 
+                    <mat-tab mat-tab label ="Ingreso"> 
+                        <form [formGroup]="ingresoForm" class="ml-5">
+                            <div class="ml-2">
+                                <mat-form-field appearance="standard">
+                                <mat-label>Ingreso €</mat-label>
+                                <input matInput placeholder="Ingreso" formControlName="saldo">
+                                <mat-icon matSuffix>attach_money</mat-icon>
+                                </mat-form-field>
+                            </div>
+                            <div class="ml-2">
+                                <mat-form-field appearance="fill">
+                                <mat-label>Cuenta</mat-label>
+                                <mat-select formControlName="num_cuenta">
+                                    <mat-option *ngFor="let cuentas of listadoTodasLasCuentas" [value]="cuentas.num_cuenta">{{cuentas.num_cuenta}}</mat-option>
+                                </mat-select>
+                                <mat-error></mat-error>
+                            </mat-form-field>
+                            </div>
+                            <div class="ml-5 pl-1">
+                                <button mat-stroked-button color="primary" class="temaBtnPago" (click)="nuevoIngreso()"><mat-icon class="mr-1">cloud_upload</mat-icon>Enviar</button>
+                            </div>
+                        </form>
+                    </mat-tab> 
+                </mat-tab-group >
+            </div>
         </div>
     </div>
-</div>
