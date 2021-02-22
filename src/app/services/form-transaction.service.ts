@@ -68,4 +68,12 @@ export class FormTransactionService {
       //    tap(data => console.log(data)),
     );
 }
+/**
+ * 
+ */
+getTodasLasCuentasPorNombre(): Observable<Cuenta[]>{
+  return this.http.get<Cuenta[]>('/cuentas/allPorNombre').pipe(
+    //    tap(data => console.log(data)),
+  );
+}
 }

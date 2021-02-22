@@ -18,6 +18,7 @@ export interface Cuenta{
     tipo: string;
     id_usuario: number;
     saldo: number;
+    username: string;
 }
 
 export interface Usuario{

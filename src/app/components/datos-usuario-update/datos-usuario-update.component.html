@@ -9,25 +9,35 @@
                 <mat-form-field appearance="fill">
                     <mat-label>Username</mat-label>
                     <input matInput placeholder="Tu nombre de usuario" formControlName="username">
-                    <mat-hint></mat-hint> <!--Esto es una pequeña etiqueta para sugerencias de texto-->
+                    <ng-container *ngIf="updateRegistroForm.controls.username.errors != undefined">
+                        <div class="errorValidacion" *ngIf="updateRegistroForm.controls.username.errors.required">Debes introducir algún valor
+                        </div>
+                        <div class="errorValidacion" *ngIf="updateRegistroForm.controls.username.errors.minlength">Debe tener al menos 5
+                            caracteres</div>
+                    </ng-container>
                    
                 </mat-form-field>
                 <mat-form-field appearance="fill">
                     <mat-label>Email</mat-label>
                     <input matInput placeholder="Tu nombre de usuario" formControlName="email">
-                    <mat-hint></mat-hint> <!--Esto es una pequeña etiqueta para sugerencias de texto-->
-                   
+                    <ng-container *ngIf="updateRegistroForm.controls.email.errors != undefined">
+                        <div class="errorValidacion" *ngIf="updateRegistroForm.controls.email.errors.required">Debes introducir una email
+                        </div>
+                        <div class="errorValidacion" *ngIf="updateRegistroForm.controls.email.errors.email">Debe tener formato de email
+                            </div>
+                    </ng-container>
                 </mat-form-field>
 
                 <mat-form-field appearance="fill">
                     <mat-label>Contraseña</mat-label>
                     <input matInput  placeholder="Tu contraseña" formControlName="password">
-                    <button mat-icon-button matSuffix>
-                        <mat-icon></mat-icon>
-                    </button>
+                    <ng-container *ngIf="updateRegistroForm.controls.password.errors != undefined">
+                        <div class="errorValidacion" *ngIf="updateRegistroForm.controls.password.errors.required">Debes introducir una contraseña
+                        </div>
+                    </ng-container>
                 </mat-form-field>
                 <mat-card-actions class="botonLogin">
-                    <button mat-stroked-button color="primary" class="temaBtnLogin" (click)="updateDatos()">Modificar</button>
+                    <button mat-stroked-button color="primary" [disabled]="updateRegistroForm.invalid" class="temaBtnLogin" (click)="updateDatos()">Modificar</button>
                     <button mat-stroked-button color="primary" class="temaBtnLogin" (click)="volverAlosCometidos()">Volver</button>
                 </mat-card-actions>
             </form>

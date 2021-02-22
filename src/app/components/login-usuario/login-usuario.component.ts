@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { UsuarioLoginService } from 'src/app/services/usuario-login.service';
 import { FormTransactionService } from 'src/app/services/form-transaction.service';
 import { JwtService } from '../../services/jwt.service'; 
+import { DialogosService } from '../../services/dialogos.service'; 
 
 
 @Component({
@@ -16,7 +17,8 @@ export class LoginUsuarioComponent implements OnInit {
   loginForm: FormGroup; // Permite tener un objeto linkado a los campos del formulario de autenticación
   ocultarPassword: boolean = true; // Utilizado para conocer si se muestra u oculta el contenido del campo password
   
-  constructor(private router: Router, private usuarioService: UsuarioLoginService, private autenticadorJwtService: JwtService) { }
+  constructor(private router: Router, private usuarioService: UsuarioLoginService, 
+    private autenticadorJwtService: JwtService, private dialogosService: DialogosService) { }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -32,6 +34,7 @@ export class LoginUsuarioComponent implements OnInit {
   autenticarUsuario() {
     // Utilizo el "UsuarioService" para enviar los datos de logado y subscribirme a la respuesta del 
     // servidor
+    this.dialogosService.abrirDialogCargando();
     this.usuarioService.autenticaUsuario(this.loginForm.controls.username.value,
       this.loginForm.controls.password.value).subscribe(data => {
 //        console.log(data);
@@ -39,16 +42,20 @@ export class LoginUsuarioComponent implements OnInit {
           this.autenticadorJwtService.almacenaJWT(data.jwt);
           console.log('Datos correctos');
           this.router.navigate(['/listadoCometidos']);
-          this.usuarioService.emitirNuevoCambioEnUsuarioAutenticado(); // Emito evento de cambio en usuario autenticado
+          this.dialogosService.cerrarDialogo();
+          //this.usuarioService.emitirNuevoCambioEnUsuarioAutenticado(); // Emito evento de cambio en usuario autenticado
 
         } 
         else {
+          this.dialogosService.abrirDialogError("Datos introducidos incorrectos");
           console.log('Datos incorrectos');
         }
       });
   }
 
   registro(){
+    this.dialogosService.abrirDialogCargando();
     this.router.navigate(['/registroUsuario']);
+    this.dialogosService.cerrarDialogo();
   }
 }

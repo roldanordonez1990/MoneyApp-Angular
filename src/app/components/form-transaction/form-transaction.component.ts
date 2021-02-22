@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FormTransactionService } from 'src/app/services/form-transaction.service';
 import { Router } from '@angular/router';
 import { Cuenta, Establecimiento } from '../../interfaces/interfaces';
+import { DialogosService } from '../../services/dialogos.service'; 
 
 
 @Component({
@@ -18,7 +19,9 @@ export class FormTransactionComponent implements OnInit {
   listadoCuentaUsuario: Cuenta[];
   listadoTodasLasCuentas: Cuenta [];
   listadoEstablecimientos: Establecimiento[];
-  constructor(private formTransaction: FormTransactionService, private router: Router) { }
+  listadoCuentasPorNombre: Cuenta[];
+  constructor(private formTransaction: FormTransactionService, private router: Router,
+    private dialogosService: DialogosService) { }
 
   ngOnInit(): void {
     this.cometidoForm = new FormGroup({
@@ -53,14 +56,20 @@ export class FormTransactionComponent implements OnInit {
       this.listadoTodasLasCuentas = data['todasLasCuentas'];
         console.log(this.listadoTodasLasCuentas);
       });
+
+    this.formTransaction.getTodasLasCuentasPorNombre().subscribe(data =>{
+        
+      this.listadoCuentasPorNombre = data['todasLasCuentasPorNombre'];
+        console.log(this.listadoCuentasPorNombre);
+      });
 }
 
   nuevoCometidoIntroducido() {
-    
+    //this.dialogosService.abrirDialogCargando();
     this.formTransaction.nuevoCometidoPorServicio(this.cometidoForm.controls.gasto.value,
       this.cometidoForm.controls.categoria.value, this.cometidoForm.controls.lugar.value, this.cometidoForm.controls.cuenta.value).subscribe(data => {
 //        console.log(data);
-       
+    //this.dialogosService.cerrarDialogo();
       window.location.reload();
 
       });
@@ -70,11 +79,11 @@ export class FormTransactionComponent implements OnInit {
    * 
    */
   nuevoIngreso() {
-    
+    //this.dialogosService.abrirDialogCargando();
     this.formTransaction.nuevoIngresoPorServicio(this.ingresoForm.controls.saldo.value,
       this.ingresoForm.controls.num_cuenta.value).subscribe(data => {
 //        console.log(data);
-       
+    //this.dialogosService.cerrarDialogo();
       window.location.reload();
 
       });

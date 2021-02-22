@@ -56,7 +56,7 @@
                                 <mat-form-field appearance="fill">
                                 <mat-label>Cuenta</mat-label>
                                 <mat-select formControlName="num_cuenta">
-                                    <mat-option *ngFor="let cuentas of listadoTodasLasCuentas" [value]="cuentas.num_cuenta">{{cuentas.num_cuenta}}</mat-option>
+                                    <mat-option *ngFor="let cuentas of listadoCuentasPorNombre" [value]="cuentas.num_cuenta">{{cuentas.username}}</mat-option>
                                 </mat-select>
                                 <mat-error></mat-error>
                             </mat-form-field>

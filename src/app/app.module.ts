@@ -27,6 +27,9 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RegistroNuevoUsuarioComponent } from './components/registro-nuevo-usuario/registro-nuevo-usuario.component';
 import { DatosUsuarioUpdateComponent } from './components/datos-usuario-update/datos-usuario-update.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogosComponent } from './components/dialogos/dialogos.component';
 
 
 @NgModule({
@@ -38,7 +41,8 @@ import { DatosUsuarioUpdateComponent } from './components/datos-usuario-update/d
     FormTransactionComponent,
     ImagenUsuarioComponent,
     RegistroNuevoUsuarioComponent,
-    DatosUsuarioUpdateComponent
+    DatosUsuarioUpdateComponent,
+    DialogosComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +61,10 @@ import { DatosUsuarioUpdateComponent } from './components/datos-usuario-update/d
     MatSelectModule,
     MatTabsModule,
     MatMenuModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatProgressSpinnerModule,
+    MatDialogModule
+
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }],
   bootstrap: [AppComponent]

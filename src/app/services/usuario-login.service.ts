@@ -46,6 +46,9 @@ export class UsuarioLoginService {
     ); 
   }
  
+  getDatosUsuario(): Observable<Usuario>{
+    return this.http.get<Usuario>('/usuario/getDatos');
+  }
   /**
    * 
    */

@@ -3,24 +3,24 @@
     <div class="container w-100 p-0">
         <div class="row mt-4">
             <div class="col-sm-8">
-                <h3 class="text-center tipoLetra">Historial de gastos</h3>
+                <h3 class="text-center tipoLetra">Historial de gastos de {{usuarios['username']}}</h3>
                 <table mat-table  class="mat-elevation-z8 text-center mt-3 table-responsive-md"  width="100%">
 
                     <ng-container matColumnDef="position">
                         <thead class="text-center">
-                            <th mat-header-cell >Gasto</th>
-                            <th mat-header-cell >Categoría</th>
-                            <th mat-header-cell >Lugar</th>
-                            <th mat-header-cell >Fecha</th>
-                            <th mat-header-cell >Cuenta</th>
-                            <th mat-header-cell >Comisión</th>
-                            <th mat-header-cell >Eliminar</th>
+                            <th mat-header-cell class="temaHeader">Gasto</th>
+                            <th mat-header-cell class="temaHeader">Categoría</th>
+                            <th mat-header-cell class="temaHeader">Lugar</th>
+                            <th mat-header-cell class="temaHeader">Fecha</th>
+                            <th mat-header-cell class="temaHeader">Cuenta</th>
+                            <th mat-header-cell class="temaHeader">Comisión</th>
+                            <th mat-header-cell class="temaHeader">Eliminar</th>
                         </thead>
                     </ng-container>
                   
                     <!-- Name Column -->
-                    <ng-container matColumnDef="name">
-                     
+                    <ng-container matColumnDef="name" *ngIf="listadoCometidos != null">
+                        
                         <tr *ngFor="let cometido of listadoCometidos" class="text-center">
                             <td>{{cometido.gasto}}€</td>
                             <td>{{cometido.categoria}}</td>
@@ -29,14 +29,21 @@
                             <td>{{cometido.id_cuenta['num_cuenta']}}</td>
                             <td>{{cometido.comision | number : "1.2-2"}}€</td>
                             <td>   
-                            <button mat-icon-button color="primary" aria-label="Example icon button with a menu icon">
-                                <mat-icon class="colorButtonDelete" >delete</mat-icon></button>
+                            <form [formGroup]="cometidoFormDelete">   
+                            <button mat-icon-button color="primary" aria-label="Example icon button with a menu icon" [value]="cometido.idcometido" formControlName="idcometido" (click)="deleteCometidos(cometido.idcometido)"> 
+                                <mat-icon class="colorButtonDelete" >delete</mat-icon>
+                            </button>
+                            </form> 
                             </td>
                         </tr>
                     </ng-container>
-                
+                    <ng-container *ngIf="listadoCometidos == null">
+                        <p>No hay nada</p>
+                    </ng-container>
                   </table>
+                   
             </div>
+            
             <div class="col-sm-4">
                 <app-form-transaction></app-form-transaction>
             </div>

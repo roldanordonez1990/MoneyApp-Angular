@@ -4,6 +4,10 @@ import { NavigationHeaderService } from 'src/app/services/navigation-header.serv
 import { UsuarioLoginService } from 'src/app/services/usuario-login.service';
 import { Usuario } from 'src/app/interfaces/interfaces';
 import { Router } from '@angular/router';
+import { DialogosService } from '../../services/dialogos.service'; 
+import { JwtService } from '../../services/jwt.service'; 
+import { DialogTypes } from '../../components/dialogos/dialogos-general'; 
+
 
 @Component({
   selector: 'app-navigation-header',
@@ -16,7 +20,8 @@ export class NavigationHeaderComponent implements OnInit {
   cuentaDelUsuario: Cuenta[];
 
   constructor(private navigationHeaderService: NavigationHeaderService,  
-    private usuariosService: UsuarioLoginService, private router: Router) { }
+    private usuariosService: UsuarioLoginService, private router: Router, 
+    private dialogosService: DialogosService, private autenticadorJwtService: JwtService) { }
 
   ngOnInit(): void {
    
@@ -34,9 +39,14 @@ export class NavigationHeaderComponent implements OnInit {
   }
 
   abandonarSesion(){
-    this.router.navigate(['/login']);
+    this.dialogosService.abrirDialogConfirmacion("¿Quiere abandonar la sesión?").subscribe(opcionElegida => {
+      if (opcionElegida == DialogTypes.RESPUESTA_ACEPTAR) {
+        this.autenticadorJwtService.eliminaJWT();
+        this.usuarioAutenticado = null;
+        this.router.navigate(['/login']);
+      }
+    });
   }
-
   irAdatosUpdateUsuario(){
     this.router.navigate(['/updateDatosUsario']);
   }
