@@ -58,10 +58,7 @@ export class UsuarioLoginService {
     return this.http.get<Usuario>('/usuario/autenticadoImagen?foto=' + incluirImagen)
     .pipe(
       tap(usuarioAutenticado => {
-        // En la condición del if intento detectar varios casos que provocan un cambio en 
-        // el usuario autenticado
-        
-            //this.emitirNuevoCambioEnUsuarioAutenticado();
+
             this.usuarioAutenticado = usuarioAutenticado;
           
       })

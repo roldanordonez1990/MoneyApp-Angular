@@ -30,6 +30,9 @@ import { DatosUsuarioUpdateComponent } from './components/datos-usuario-update/d
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogosComponent } from './components/dialogos/dialogos.component';
+import { MatTableModule } from '@angular/material/table';
+
+
 
 
 @NgModule({
@@ -63,7 +66,9 @@ import { DialogosComponent } from './components/dialogos/dialogos.component';
     MatMenuModule,
     MatTooltipModule,
     MatProgressSpinnerModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTableModule
+
 
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }],

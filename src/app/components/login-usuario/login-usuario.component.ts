@@ -43,7 +43,7 @@ export class LoginUsuarioComponent implements OnInit {
           console.log('Datos correctos');
           this.router.navigate(['/listadoCometidos']);
           this.dialogosService.cerrarDialogo();
-          //this.usuarioService.emitirNuevoCambioEnUsuarioAutenticado(); // Emito evento de cambio en usuario autenticado
+          this.usuarioService.emitirNuevoCambioEnUsuarioAutenticado(); // Emito evento de cambio en usuario autenticado
 
         } 
         else {
