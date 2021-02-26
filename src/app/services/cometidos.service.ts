@@ -13,7 +13,7 @@ export class CometidosService {
 
   constructor(private http: HttpClient) { }
 
-  getCometidosPorUsuario(): Observable<Cometidos[]>{
+  getCometidosPorUsuario(): Observable<Cometidos[]> {
     return this.http.get<Cometidos[]>('/cometidos/all').pipe(
       //    tap(data => console.log(data)),
     );
@@ -21,20 +21,20 @@ export class CometidosService {
   /**
    * 
    */
-  getDatosUsuario(): Observable<Usuario[]>{
+  getDatosUsuario(): Observable<Usuario[]> {
     return this.http.get<Usuario[]>('/usuario/getDatos');
   }
   /**
    * 
    */
 
-   deleteCometido(idcometido: 50): Observable<Cometidos>{
+  deleteCometido(idcometido: 50): Observable<Cometidos> {
 
     return this.http.delete<Cometidos>('/cometido/delete?idcometido=' + idcometido).pipe(
-         tap(data => console.log(idcometido)),
-      
+      tap(data => console.log(idcometido)),
+
     );
-    
-   }
- 
+
+  }
+
 }

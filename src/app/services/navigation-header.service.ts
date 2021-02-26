@@ -9,28 +9,28 @@ import { tap } from 'rxjs/operators';
 })
 export class NavigationHeaderService {
 
-  cuentaDetectada: Cuenta[]; 
+  cuentaDetectada: Cuenta[];
   //output permite crear eventos a los que subscribirse
-  @Output() 
+  @Output()
   //a través de estos eventos, viaja un objeto Cuenta
-  cambiosCuentaDetectada = new EventEmitter<Cuenta>(); 
+  cambiosCuentaDetectada = new EventEmitter<Cuenta>();
 
   constructor(private http: HttpClient) { }
 
-   /**
-   * 
-   */
-  getCuentaUsuario(): Observable<Cuenta[]>{
+  /**
+  * 
+  */
+  getCuentaUsuario(): Observable<Cuenta[]> {
     return this.http.get<Cuenta[]>('/cuentasUsuario/all').pipe(
-         tap(dataCuenta => {
-           this.cuentaDetectada = dataCuenta['cuentas'];
-         })
+      tap(dataCuenta => {
+        this.cuentaDetectada = dataCuenta['cuentas'];
+      })
     );
   }
-/**
- * 
- */
-  emitirCambioSaldoCuenta () {
+  /**
+   * 
+   */
+  emitirCambioSaldoCuenta() {
     this.getCuentaUsuario().subscribe(cuentaDetectada => {
       this.cambiosCuentaDetectada.emit(cuentaDetectada['cuentas']);
     });

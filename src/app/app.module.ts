@@ -31,6 +31,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogosComponent } from './components/dialogos/dialogos.component';
 import { MatTableModule } from '@angular/material/table';
+import { ContactoComponent } from './components/contacto/contacto.component';
+import { TerminosLegalesComponent } from './components/terminos-legales/terminos-legales.component';
 
 
 
@@ -45,7 +47,9 @@ import { MatTableModule } from '@angular/material/table';
     ImagenUsuarioComponent,
     RegistroNuevoUsuarioComponent,
     DatosUsuarioUpdateComponent,
-    DialogosComponent
+    DialogosComponent,
+    ContactoComponent,
+    TerminosLegalesComponent
   ],
   imports: [
     BrowserModule,

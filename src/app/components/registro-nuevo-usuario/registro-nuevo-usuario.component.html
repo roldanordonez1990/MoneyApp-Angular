@@ -1,48 +1,55 @@
 <div class="contenedorLogin">
-    <mat-card class="loginCard">
-        <mat-card-header class="botonLogin">
-            <mat-card-title>Nuevo Registro</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-            <form [formGroup]="loginFormRegistro">
-                <mat-form-field appearance="fill">
-                    <mat-label>Usuario</mat-label>
-                    <input matInput placeholder="Tu nombre de usuario" formControlName="username">
-                    <mat-hint></mat-hint> <!--Esto es una pequeña etiqueta para sugerencias de texto-->
-                    <ng-container *ngIf="loginFormRegistro.controls.username.errors != undefined">
-                        <div class="errorValidacion" *ngIf="loginFormRegistro.controls.username.errors.required">Debes introducir algún valor
-                        </div>
-                        <div class="errorValidacion" *ngIf="loginFormRegistro.controls.username.errors.minlength">Debe tener al menos 5
-                            caracteres</div>
-                    </ng-container>
-                </mat-form-field>
+  <mat-card class="loginCard">
+    <mat-card-header class="botonLogin">
+      <mat-card-title>Nuevo Registro</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="loginFormRegistro">
+        <mat-form-field appearance="fill">
+          <mat-label>Usuario</mat-label>
+          <input matInput placeholder="Tu nombre de usuario" formControlName="username">
+          <mat-hint></mat-hint>
+          <!--Esto es una pequeña etiqueta para sugerencias de texto-->
+          <ng-container *ngIf="loginFormRegistro.controls.username.errors != undefined">
+            <div class="errorValidacion" *ngIf="loginFormRegistro.controls.username.errors.required">Debes introducir
+              algún valor
+            </div>
+            <div class="errorValidacion" *ngIf="loginFormRegistro.controls.username.errors.minlength">Debe tener al
+              menos 5
+              caracteres</div>
+          </ng-container>
+        </mat-form-field>
 
-                <mat-form-field appearance="fill">
-                    <mat-label>Email</mat-label>
-                    <input matInput placeholder="Tu nombre de usuario" formControlName="email">
-                    <ng-container *ngIf="loginFormRegistro.controls.email.errors != undefined">
-                        <div class="errorValidacion" *ngIf="loginFormRegistro.controls.email.errors.required">Debes introducir una email
-                        </div>
-                        <div class="errorValidacion" *ngIf="loginFormRegistro.controls.email.errors.email">Debe tener formato de email
-                            </div>
-                    </ng-container>
-                   
-                </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Tu nombre de usuario" formControlName="email">
+          <ng-container *ngIf="loginFormRegistro.controls.email.errors != undefined">
+            <div class="errorValidacion" *ngIf="loginFormRegistro.controls.email.errors.required">Debes introducir una
+              email
+            </div>
+            <div class="errorValidacion" *ngIf="loginFormRegistro.controls.email.errors.email">Debe tener formato de
+              email
+            </div>
+          </ng-container>
 
-                <mat-form-field appearance="fill">
-                    <mat-label>Contraseña</mat-label>
-                    <input matInput  placeholder="Tu contraseña" formControlName="password">
-                    <ng-container *ngIf="loginFormRegistro.controls.password.errors != undefined">
-                        <div class="errorValidacion" *ngIf="loginFormRegistro.controls.password.errors.required">Debes introducir una contraseña
-                        </div>
-                    </ng-container>
-                </mat-form-field>
-                <mat-card-actions class="botonLogin">
-                    <button mat-stroked-button color="primary" [disabled]="loginFormRegistro.invalid" class="temaBtnLogin" (click)="nuevoRegistro()">Registrar</button>
-                    <button mat-stroked-button color="primary" class="temaBtnLogin" (click)="volverAlogin()">Volver</button>
-                </mat-card-actions>
-            </form>
-        </mat-card-content>
-       
-    </mat-card>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Contraseña</mat-label>
+          <input matInput placeholder="Tu contraseña" formControlName="password">
+          <ng-container *ngIf="loginFormRegistro.controls.password.errors != undefined">
+            <div class="errorValidacion" *ngIf="loginFormRegistro.controls.password.errors.required">Debes introducir
+              una contraseña
+            </div>
+          </ng-container>
+        </mat-form-field>
+        <mat-card-actions class="botonLogin">
+          <button mat-stroked-button color="primary" [disabled]="loginFormRegistro.invalid" class="temaBtnLogin"
+            (click)="nuevoRegistro()">Registrar</button>
+          <button mat-stroked-button color="primary" class="temaBtnLogin" (click)="volverAlogin()">Volver</button>
+        </mat-card-actions>
+      </form>
+    </mat-card-content>
+
+  </mat-card>
 </div>

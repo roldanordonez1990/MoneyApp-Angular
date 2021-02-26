@@ -1,26 +1,31 @@
 <mat-toolbar color="primary">
-<mat-toolbar-row>
-  <mat-icon>paid</mat-icon>
-   <span class="tipoLetra">Money App</span>
-   <span class="example-spacer"></span>
-   <ng-container *ngFor="let cuenta of cuentaDelUsuario">
-    <span class="mr-4 pr-5 tipoLetra " [ngStyle]="{'color': cuenta.saldo < 0? 'red' : ''}">Tu saldo actual: {{cuenta.saldo}}€</span>
-   </ng-container>
-   
-   <ng-container>
-    <button mat-icon-button color="accent" [matMenuTriggerFor]="menu">
-      <!--<app-imagen-usuario [usuario]="usuarioAutenticado" [width]="50" [height]="50"></app-imagen-usuario>-->
-      <mat-icon class="colorMenuButton">menu</mat-icon>
-    </button> 
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="irAdatosUpdateUsuario()">
-        <mat-icon>account_circle</mat-icon>Modificar mis datos
+  <mat-toolbar-row>
+    <mat-icon>paid</mat-icon>
+    <span class="tipoLetra">Money App</span>
+    <span class="example-spacer"></span>
+    <ng-container *ngFor="let cuenta of cuentaDelUsuario">
+      <span class="mr-4 pr-5 tipoLetra " [ngStyle]="{'color': cuenta.saldo < 0? 'red' : ''}">Tu saldo actual:
+        {{cuenta.saldo}}€</span>
+    </ng-container>
+
+    <ng-container>
+      <button mat-icon-button color="accent" [matMenuTriggerFor]="menu">
+        <!--<app-imagen-usuario [usuario]="usuarioAutenticado" [width]="50" [height]="50"></app-imagen-usuario>-->
+        <mat-icon class="colorMenuButton">menu</mat-icon>
       </button>
-      <button mat-menu-item (click)="abandonarSesion()">
-        <mat-icon>exit_to_app</mat-icon>
-        <span>Cerrar sesión</span>
-      </button>
-    </mat-menu> 
-  </ng-container>
-</mat-toolbar-row>
- </mat-toolbar>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="irAdatosUpdateUsuario()">
+          <mat-icon>account_circle</mat-icon>Modificar mis datos
+        </button>
+        <button mat-menu-item (click)="irAcontacto()">
+          <mat-icon>not_listed_location</mat-icon>
+          <span>¿Quiénes somos?</span>
+        </button>
+        <button mat-menu-item (click)="abandonarSesion()">
+          <mat-icon>exit_to_app</mat-icon>
+          <span>Cerrar sesión</span>
+        </button>
+      </mat-menu>
+    </ng-container>
+  </mat-toolbar-row>
+</mat-toolbar>

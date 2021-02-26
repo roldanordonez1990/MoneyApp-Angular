@@ -11,11 +11,11 @@ import { Establecimiento } from '../interfaces/interfaces';
   providedIn: 'root'
 })
 export class FormTransactionService {
- 
+
   constructor(private http: HttpClient) { }
   //
-  nuevoCometidoPorServicio(gasto: number, categoria: string, lugar: number, cuenta: number) : Observable<Cometidos> {
-   
+  nuevoCometidoPorServicio(gasto: number, categoria: string, lugar: number, cuenta: number): Observable<Cometidos> {
+
     var jsonObject = {
       gasto: gasto,
       categoria: categoria,
@@ -31,8 +31,8 @@ export class FormTransactionService {
   /**
    * 
    */
-  nuevoIngresoPorServicio(saldo: number, num_cuenta: number) : Observable<Cuenta> {
-   
+  nuevoIngresoPorServicio(saldo: number, num_cuenta: number): Observable<Cuenta> {
+
     var jsonObject = {
       saldo: saldo,
       num_cuenta: num_cuenta
@@ -43,10 +43,10 @@ export class FormTransactionService {
       //    tap(data => console.log(data)),
     );
   }
-/**
- * 
- */
-  getTodasLasCuentasDeUsuario(): Observable<Cuenta[]>{
+  /**
+   * 
+   */
+  getTodasLasCuentasDeUsuario(): Observable<Cuenta[]> {
     return this.http.get<Cuenta[]>('/cuentasUsuario/all').pipe(
       //    tap(data => console.log(data)),
     );
@@ -54,26 +54,26 @@ export class FormTransactionService {
   /**
    * 
    */
- 
-  getTodasLosEstablecimientos(): Observable<Establecimiento[]>{
+
+  getTodasLosEstablecimientos(): Observable<Establecimiento[]> {
     return this.http.get<Establecimiento[]>('/establecimientosAngular/all').pipe(
       //    tap(data => console.log(data)),
     );
   }
-/**
- * 
- */
-  getTodasLasCuentas(): Observable<Cuenta[]>{
+  /**
+   * 
+   */
+  getTodasLasCuentas(): Observable<Cuenta[]> {
     return this.http.get<Cuenta[]>('/cuentas/all').pipe(
       //    tap(data => console.log(data)),
     );
-}
-/**
- * 
- */
-getTodasLasCuentasPorNombre(): Observable<Cuenta[]>{
-  return this.http.get<Cuenta[]>('/cuentas/allPorNombre').pipe(
-    //    tap(data => console.log(data)),
-  );
-}
+  }
+  /**
+   * 
+   */
+  getTodasLasCuentasPorNombre(): Observable<Cuenta[]> {
+    return this.http.get<Cuenta[]>('/cuentas/allPorNombre').pipe(
+      //    tap(data => console.log(data)),
+    );
+  }
 }

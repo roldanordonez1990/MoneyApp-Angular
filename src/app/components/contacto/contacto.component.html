@@ -1,0 +1,55 @@
+<div>
+  <app-navigation-header></app-navigation-header>
+</div>
+
+<div class="container w-100 p-0">
+  <div class="row mt-4">
+    <div class="col-sm-12">
+      <h3 class="text-center tipoLetra">¿Qué es MoneyApp?</h3>
+      <p><strong>MoneyApp</strong> es una aplicación con la que podrás realizar tus pagos en diferentes establecimientos con un descuento
+        por lo que consumas. La app se llevará una pequeña comisión de tu compra, pero aún así, el total a pagar será
+        menor que si pagueses directamente en dicho establecimiento. ¡Podrás ahorrarte un dinero!</p>
+
+      <p>La forma de utilizar la aplicación es muy sencilla e intuitiva. Cada vez más se irán sumandos nuevos
+        establecimientos con los que podrás usar esta app y disfrutar de numerosos descuentos. Para cualquier duda, no
+        dude en ponserse en contacto con nosotros. Además, puede consultar nuestros <a routerLink='/terminosLegales'><strong>Términos Legales</strong></a></p>
+      <div class="contenedorLogin mt-4">
+        <mat-card class="loginCard">
+          <mat-card-header class="botonLogin">
+            <mat-card-title>¿Tienes alguna duda?</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <form [formGroup]="loginFormDudas">
+              <mat-form-field appearance="fill">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Tu email" formControlName="email">
+                <ng-container *ngIf="loginFormDudas.controls.email.errors != undefined">
+                  <div class="errorValidacion" *ngIf="loginFormDudas.controls.email.errors.required">Debes introducir
+                    un
+                    email
+                  </div>
+                  <div class="errorValidacion" *ngIf="loginFormDudas.controls.email.errors.email">Debe tener formato de
+                    email
+                  </div>
+                </ng-container>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Formula tu pregunta</mat-label>
+                <textarea matInput placeholder="Escribe tu pregunta" formControlName="comentario"></textarea>
+                <ng-container *ngIf="loginFormDudas.controls.comentario.errors != undefined">
+                  <div class="errorValidacion" *ngIf="loginFormDudas.controls.comentario.errors.required">Debes formular
+                    tu pregunta
+                  </div>
+                </ng-container>
+              </mat-form-field>
+              <mat-card-actions class="botonLogin">
+                <button mat-stroked-button color="primary" [disabled]="loginFormDudas.invalid"
+                  class="temaBtnLogin" (click)="dudaEnviada()">Enviar</button>
+                <button mat-stroked-button color="primary" class="temaBtnLogin"
+                  (click)="volverAcometidos()">Volver</button>
+              </mat-card-actions>
+            </form>
+          </mat-card-content>
+        </mat-card>
+    </div>
+  </div>

@@ -1,4 +1,3 @@
-// Una interface para definir el tipo de datos que puedo pasar a un dialogo
 export interface DialogDataType {
     tipoDialogo: number,  
     texto: string

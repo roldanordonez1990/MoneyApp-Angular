@@ -13,20 +13,20 @@ export class RegistroUsuarioService {
   constructor(private http: HttpClient) { }
 
 
-  registroNuevoUsuario (username: string, email: string, password: string) : Observable<Usuario> {
+  registroNuevoUsuario(username: string, email: string, password: string): Observable<Usuario> {
     const md5 = new Md5(); // Creo un objeto que permite codificar en MD5
-      var jsonObject = {
-        username: username,
-        email: email,
-        password: md5.appendStr(password).end().toString()  // Codifico en MD5 el password recibido
-      };
+    var jsonObject = {
+      username: username,
+      email: email,
+      password: md5.appendStr(password).end().toString()  // Codifico en MD5 el password recibido
+    };
 
     // Envío la petición http y devuelvo el Observable, para que cualquiera pueda subscribirse.
-      return this.http.post<Usuario>('/usuario/nuevoRegistro', jsonObject).pipe(
-      tap(data => { 
-       
+    return this.http.post<Usuario>('/usuario/nuevoRegistro', jsonObject).pipe(
+      tap(data => {
+
       })
-    ); 
+    );
   }
- 
+
 }
